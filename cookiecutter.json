@@ -3,5 +3,6 @@
     "dvc_ssh_username": "m.ivanov",
     "dvc_ssh_key_path": "default_key_path",
     "project_name": "MyNewProject",
-    "project_shortcut": "Project"
+    "project_shortcut": "Project",
+    "train_val_test_split": true
 }
