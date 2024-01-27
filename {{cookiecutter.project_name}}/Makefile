@@ -1,5 +1,5 @@
 CALL_CMD=PYTHONPATH=. python
-CONFIG_PATH=configs/base_config.yaml
+CONFIG_PATH=configs/config.yaml
 ACTIVATE_VENV=source .venv/bin/activate
 
 SHELL := /bin/bash

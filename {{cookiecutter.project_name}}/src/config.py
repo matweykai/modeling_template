@@ -16,7 +16,6 @@ class DataConfig(BaseModel):
     dataset_path: str
     batch_size: int
     n_workers: int
-    train_fraq: float
     width: int
     height: int
     augmentations: List[AugmentationConfig]

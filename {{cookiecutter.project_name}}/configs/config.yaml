@@ -1,0 +1,43 @@
+project_name: '{{cookiecutter.project_name}}'
+experiment_name: 'exp_1.0'
+random_seed: 1234
+
+accelerator: 'cuda'
+device: 1
+
+n_epochs: 20
+num_classes: 17
+
+model_kwargs:
+  model_name: 'resnet50'
+  pretrained: true
+
+optimizer: 'torch.optim.AdamW'
+optimizer_kwargs:
+  lr: 1e-2
+  weight_decay: 1e-5
+
+# Scheduler is disabled
+scheduler: 'torch.optim.lr_scheduler.ConstantLR'
+scheduler_kwargs:
+  factor: 1
+
+losses:
+  - name: 'bce'
+    weight: 1
+    loss_fn: 'torch.nn.BCEWithLogitsLoss'
+    loss_kwargs: {}
+
+data_config:
+  dataset_path: 'data/datasets/planet'
+  batch_size: 72
+  n_workers: 8
+  width: 256
+  height: 256
+  augmentations:
+    - augm_fn: 'albu.HorizontalFlip'
+      augm_kwargs:
+        p: 0.5
+
+monitor_metric: 'val_f1'
+monitor_mode: 'max'
