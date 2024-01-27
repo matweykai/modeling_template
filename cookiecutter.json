@@ -1,7 +1,7 @@
 {
-    "dvc_remote_folder_path": "91.206.15.25/home/m.ivanov/dvc_files",
-    "dvc_ssh_username": "m.ivanov",
-    "dvc_ssh_key_path": "default_key_path",
+    "dvc_remote_folder_path": "__server_ip__/home/user_name/dvc_files",
+    "dvc_ssh_username": "__user_name__",
+    "dvc_ssh_key_path": "__local_key_path__",
     "project_name": "MyNewProject",
     "project_shortcut": "Project",
     "train_val_test_split": true
