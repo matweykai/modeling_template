@@ -35,7 +35,7 @@ data_config:
   width: 256
   height: 256
   augmentations:
-    - augm_fn: 'albu.HorizontalFlip'
+    - augm_fn: 'albumentations.HorizontalFlip'
       augm_kwargs:
         p: 0.5
 

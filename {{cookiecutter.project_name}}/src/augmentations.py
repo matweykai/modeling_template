@@ -57,4 +57,3 @@ def get_augmentations(augment_cfg_list: List[AugmentationConfig]) -> List[albu.B
         load_object(augm_cfg.augm_fn)(**augm_cfg.augm_kwargs)
         for augm_cfg in augment_cfg_list
     ]
-
