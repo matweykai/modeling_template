@@ -1,0 +1,6 @@
+__pycache__
+.venv
+.vscode
+.ipynb_checkpoints
+experiments
+lightning_logs
