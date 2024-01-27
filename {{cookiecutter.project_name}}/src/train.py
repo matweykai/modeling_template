@@ -52,7 +52,9 @@ def train(config: Config):
         monitor=config.monitor_metric,
         mode=config.monitor_mode,
         save_top_k=3,
-        filename=f'epoch_{{epoch:02d}}-{{{config.monitor_metric}:.3f}}',
+        {% raw %}
+            filename=f'epoch_{{epoch:02d}}-{{{config.monitor_metric}:.3f}}',
+        {% endraw %}
     )
     
     trainer = pl.Trainer(
