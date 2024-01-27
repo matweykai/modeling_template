@@ -28,8 +28,7 @@ class {{cookiecutter.project_shortcut}}Module(pl.LightningModule):
         )
 
         self._valid_metrics = metrics.clone(prefix='val_')
-
-        {% if cookiecutter.train_val_test_split %}
+        {%- if cookiecutter.train_val_test_split %}
             self._test_metrics = metrics.clone(prefix='test_')
         {% endif %}
         
@@ -98,7 +97,7 @@ class {{cookiecutter.project_shortcut}}Module(pl.LightningModule):
         pr_labels = torch.sigmoid(pr_logits)
         self._valid_metrics(pr_labels, gt_labels)
 
-    {% if cookiecutter.train_val_test_split %}
+    {%- if cookiecutter.train_val_test_split %}
         def test_step(self, batch: tuple[torch.Tensor, torch.Tensor], batch_idx: int) -> None:
         """Test step of the model that includes forward pass and metrics calculation
 
@@ -122,7 +121,7 @@ class {{cookiecutter.project_shortcut}}Module(pl.LightningModule):
         """
         self.log_dict(self._valid_metrics.compute(), on_epoch=True)
 
-    {% if cookiecutter.train_val_test_split %}
+    {%- if cookiecutter.train_val_test_split %}
         def on_test_epoch_start(self) -> None:
             """Reset metrics before test epoch
             """

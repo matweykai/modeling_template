@@ -52,9 +52,9 @@ def train(config: Config):
         monitor=config.monitor_metric,
         mode=config.monitor_mode,
         save_top_k=3,
-        {% raw %}
-            filename=f'epoch_{{epoch:02d}}-{{{config.monitor_metric}:.3f}}',
-        {% endraw %}
+        {%- raw %}
+        filename=f'epoch_{{epoch:02d}}-{{{config.monitor_metric}:.3f}}',
+        {%- endraw %}
     )
     
     trainer = pl.Trainer(
@@ -73,7 +73,7 @@ def train(config: Config):
 
     trainer.fit(model=model, datamodule=datamodule)
     trainer.validate(ckpt_path=checkpoint_callback.best_model_path, datamodule=datamodule)
-    {% if cookiecutter.train_val_test_split %}
+    {%- if cookiecutter.train_val_test_split %}
         trainer.test(ckpt_path=checkpoint_callback.best_model_path, datamodule=datamodule)
     {% endif %}
 

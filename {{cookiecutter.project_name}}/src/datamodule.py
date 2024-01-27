@@ -28,14 +28,14 @@ class {{cookiecutter.project_shortcut}}DM(LightningDataModule):
         self._dataset_path = config.dataset_path
         self._train_transforms = get_transforms(width=config.width, height=config.height, augment_cfg_list=config.augmentations)
         self._valid_transforms = get_transforms(width=config.width, height=config.height augmentations=False)
-        {% if cookiecutter.train_val_test_split %}
+        {%- if cookiecutter.train_val_test_split %}
             self._test_transforms = get_transforms(width=config.width, height=config.height, augmentations=False)
         {% endif %}
         self._image_folder = os.path.join(config.dataset_path, 'images')
 
         self.train_dataset: Dataset
         self.valid_dataset: Dataset
-        {% if cookiecutter.train_val_test_split %}
+        {%- if cookiecutter.train_val_test_split %}
             self.test_dataset: Dataset
         {% endif %}
     
@@ -69,7 +69,7 @@ class {{cookiecutter.project_shortcut}}DM(LightningDataModule):
                 images_folder=self._image_folder,
                 transforms=self._valid_transforms,
             )
-        {% if cookiecutter.train_val_test_split %}
+        {%- if cookiecutter.train_val_test_split %}
             elif stage == 'test':
                 test_df = read_df(self._dataset_path, 'test')
 
@@ -110,7 +110,7 @@ class {{cookiecutter.project_shortcut}}DM(LightningDataModule):
             drop_last=False,
         )
     
-    {% if cookiecutter.train_val_test_split %}
+    {%- if cookiecutter.train_val_test_split %}
         def test_dataloader(self) -> DataLoader:
             """Returns dataloader with validation data
 
