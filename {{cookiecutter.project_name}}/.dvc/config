@@ -1,0 +1,9 @@
+[core]
+    autostage = true
+    remote = remote_storage
+[cache]
+    type = "hardlink,symlink"
+['remote "remote_storage"']
+    url = ssh://{{cookiecutter.dvc_remote_folder_path}}
+    user = {{cookiecutter.dvc_ssh_username}}
+    keyfile = {{cookiecutter.dvc_ssh_key_path}}
